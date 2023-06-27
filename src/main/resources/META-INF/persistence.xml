@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+                                 http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
+             version="2.2">
+
+    <persistence-unit name="ShoeShopPU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>shop.entity.Age</class>
+        <class>shop.entity.Category</class>
+        <class>shop.entity.City</class>
+        <class>shop.entity.Color</class>
+        <class>shop.entity.Country</class>
+        <class>shop.entity.DeliveryInformation</class>
+        <class>shop.entity.DeliveryService</class>
+        <class>shop.entity.Gender</class>
+        <class>shop.entity.HeelHeight</class>
+        <class>shop.entity.Manufacturer</class>
+        <class>shop.entity.Material</class>
+        <class>shop.entity.Order</class>
+        <class>shop.entity.OrderStatus</class>
+        <class>shop.entity.PaymentInformation</class>
+        <class>shop.entity.PaymentService</class>
+        <class>shop.entity.PaymentTransaction</class>
+        <class>shop.entity.Product</class>
+        <class>shop.entity.Size</class>
+        <class>shop.entity.User</class>
+        <class>shop.entity.UserRole</class>
+
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/shoe_shop"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="javax.persistence.jdbc.password" value="root"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+            <property name="hibernate.show_sql" value="true"/>
+        </properties>
+    </persistence-unit>
+
+</persistence>
