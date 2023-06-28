@@ -6,7 +6,6 @@ import shop.entity.Product;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import shop.service.ProductService;
 
-
 public class Main {
     public static void main(String[] args) {
        Product iPhone = new Product();
@@ -29,5 +28,7 @@ public class Main {
        productService.save(samsung10);
 
        System.out.println(productService.findAll());
+
     }
+
 }
