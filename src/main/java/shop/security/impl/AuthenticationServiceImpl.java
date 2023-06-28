@@ -1,5 +1,7 @@
 package shop.security.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import shop.entity.User;
 import shop.exceptions.AuthenticationException;
 import shop.security.AuthenticationService;
@@ -7,8 +9,9 @@ import shop.service.UserService;
 import shop.util.HashUtil;
 
 import java.util.Optional;
-
+@Service
 public class AuthenticationServiceImpl implements AuthenticationService {
+    @Autowired
     private UserService userService;
 
     @Override

@@ -11,4 +11,9 @@ public class DemoController {
         model.addAttribute("message", "Hello, Spring Hanna!");
         return "index";
     }
+
+    @GetMapping("/hello")
+    public String hello() {
+        return "hello";
+    }
 }
