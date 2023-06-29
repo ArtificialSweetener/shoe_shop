@@ -1,12 +1,12 @@
 package shop.dao.impl;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import shop.dao.CountryDao;
 import shop.entity.Country;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 
 @Repository
 public class CountryDaoImpl implements CountryDao {

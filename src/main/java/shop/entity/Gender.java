@@ -1,8 +1,8 @@
 package shop.entity;
-
 import jakarta.persistence.*;
 
 import java.util.Objects;
+
 @Entity
 @Table(name = "genders")
 public class Gender {
@@ -31,13 +31,14 @@ public class Gender {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Gender gender1)) return false;
-        return Objects.equals(getId(), gender1.getId()) && Objects.equals(getGender(), gender1.getGender());
+        if (o == null || getClass() != o.getClass()) return false;
+        Gender gender1 = (Gender) o;
+        return Objects.equals(id, gender1.id) && Objects.equals(gender, gender1.gender);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getGender());
+        return Objects.hash(id, gender);
     }
 
     @Override

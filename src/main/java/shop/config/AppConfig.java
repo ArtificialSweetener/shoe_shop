@@ -13,8 +13,8 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-@PropertySource("classpath:application.properties")
 @ComponentScan(basePackages = "shop")
+@PropertySource("classpath:application.properties")
 public class AppConfig {
     @Autowired
     private Environment environment;

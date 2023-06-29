@@ -1,9 +1,11 @@
 package shop.entity;
 
+
 import jakarta.persistence.*;
 
 import java.util.List;
 import java.util.Objects;
+
 
 @Entity
 @Table(name = "categories")
@@ -57,13 +59,14 @@ public class Category {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Category category)) return false;
-        return Objects.equals(getId(), category.getId()) && Objects.equals(getName(), category.getName()) && Objects.equals(getDescription(), category.getDescription()) && Objects.equals(getManufacturers(), category.getManufacturers());
+        if (o == null || getClass() != o.getClass()) return false;
+        Category category = (Category) o;
+        return Objects.equals(id, category.id) && Objects.equals(name, category.name) && Objects.equals(description, category.description) && Objects.equals(manufacturers, category.manufacturers);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName(), getDescription(), getManufacturers());
+        return Objects.hash(id, name, description, manufacturers);
     }
 
     @Override

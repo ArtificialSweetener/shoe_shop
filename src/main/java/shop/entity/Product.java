@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Objects;
+
+
 @Entity
 @Table(name = "products")
 public class Product {
@@ -63,6 +65,15 @@ public class Product {
     private String productPhotoName;
     private LocalDateTime dateOfAddition;
     private boolean isDeletedByAdmin;
+
+    public Product() {
+    }
+
+    public Product(Long id, String name, double price) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+    }
 
     public Long getId() {
         return id;
@@ -219,14 +230,15 @@ public class Product {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Product product)) return false;
-        return getAmountInStock() == product.getAmountInStock() && Double.compare(product.getPrice(), getPrice()) == 0 && isDeletedByAdmin() == product.isDeletedByAdmin() && Objects.equals(getId(), product.getId()) && Objects.equals(getName(), product.getName()) && Objects.equals(getCategory(), product.getCategory()) && Objects.equals(getColor(), product.getColor()) && Objects.equals(getHeelHeight(), product.getHeelHeight()) && Objects.equals(getMaterial(), product.getMaterial()) && Objects.equals(getSize(), product.getSize()) && Objects.equals(getDescription(), product.getDescription()) && Objects.equals(getVendorCode(), product.getVendorCode()) && Objects.equals(getBarcode(), product.getBarcode()) && Objects.equals(getGender(), product.getGender()) && Objects.equals(getAge(), product.getAge()) && Objects.equals(getManufacturer(), product.getManufacturer()) && Arrays.equals(getProductPhoto(), product.getProductPhoto()) && Objects.equals(getProductPhotoName(), product.getProductPhotoName()) && Objects.equals(getDateOfAddition(), product.getDateOfAddition());
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return amountInStock == product.amountInStock && Double.compare(product.price, price) == 0 && isDeletedByAdmin == product.isDeletedByAdmin && Objects.equals(id, product.id) && Objects.equals(name, product.name) && Objects.equals(category, product.category) && Objects.equals(color, product.color) && Objects.equals(heelHeight, product.heelHeight) && Objects.equals(material, product.material) && Objects.equals(size, product.size) && Objects.equals(description, product.description) && Objects.equals(vendorCode, product.vendorCode) && Objects.equals(barcode, product.barcode) && Objects.equals(gender, product.gender) && Objects.equals(age, product.age) && Objects.equals(manufacturer, product.manufacturer) && Arrays.equals(productPhoto, product.productPhoto) && Objects.equals(productPhotoName, product.productPhotoName) && Objects.equals(dateOfAddition, product.dateOfAddition);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(getId(), getName(), getCategory(), getColor(), getHeelHeight(), getMaterial(), getSize(), getAmountInStock(), getPrice(), getDescription(), getVendorCode(), getBarcode(), getGender(), getAge(), getManufacturer(), getProductPhotoName(), getDateOfAddition(), isDeletedByAdmin());
-        result = 31 * result + Arrays.hashCode(getProductPhoto());
+        int result = Objects.hash(id, name, category, color, heelHeight, material, size, amountInStock, price, description, vendorCode, barcode, gender, age, manufacturer, productPhotoName, dateOfAddition, isDeletedByAdmin);
+        result = 31 * result + Arrays.hashCode(productPhoto);
         return result;
     }
 

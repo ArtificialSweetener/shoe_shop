@@ -1,5 +1,4 @@
 package shop.entity;
-
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -88,13 +87,14 @@ public class PaymentTransaction {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof PaymentTransaction that)) return false;
-        return Double.compare(that.getAmount(), getAmount()) == 0 && Objects.equals(getId(), that.getId()) && Objects.equals(getOrder(), that.getOrder()) && Objects.equals(getPaymentService(), that.getPaymentService()) && Objects.equals(getTransactionId(), that.getTransactionId()) && Objects.equals(getStatus(), that.getStatus()) && Objects.equals(getTimestamp(), that.getTimestamp());
+        if (o == null || getClass() != o.getClass()) return false;
+        PaymentTransaction that = (PaymentTransaction) o;
+        return Double.compare(that.amount, amount) == 0 && Objects.equals(id, that.id) && Objects.equals(order, that.order) && Objects.equals(paymentService, that.paymentService) && Objects.equals(paymentInformation, that.paymentInformation) && Objects.equals(transactionId, that.transactionId) && Objects.equals(status, that.status) && Objects.equals(timestamp, that.timestamp);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getOrder(), getPaymentService(), getTransactionId(), getAmount(), getStatus(), getTimestamp());
+        return Objects.hash(id, order, paymentService, paymentInformation, transactionId, amount, status, timestamp);
     }
 
     @Override
@@ -103,6 +103,7 @@ public class PaymentTransaction {
                 "id=" + id +
                 ", order=" + order +
                 ", paymentService=" + paymentService +
+                ", paymentInformation=" + paymentInformation +
                 ", transactionId='" + transactionId + '\'' +
                 ", amount=" + amount +
                 ", status='" + status + '\'' +

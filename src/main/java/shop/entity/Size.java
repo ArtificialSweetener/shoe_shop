@@ -1,5 +1,4 @@
 package shop.entity;
-
 import jakarta.persistence.*;
 
 import java.util.Objects;
@@ -32,13 +31,14 @@ public class Size {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Size size1)) return false;
-        return Objects.equals(getId(), size1.getId()) && Objects.equals(getSize(), size1.getSize());
+        if (o == null || getClass() != o.getClass()) return false;
+        Size size1 = (Size) o;
+        return Objects.equals(id, size1.id) && Objects.equals(size, size1.size);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getSize());
+        return Objects.hash(id, size);
     }
 
     @Override

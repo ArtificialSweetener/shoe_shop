@@ -1,12 +1,12 @@
 package shop.dao.impl;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import shop.dao.ColorDao;
 import shop.entity.Color;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 
 @Repository
 public class ColorDaoImpl implements ColorDao {

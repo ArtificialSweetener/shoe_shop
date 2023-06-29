@@ -1,12 +1,12 @@
 package shop.dao.impl;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import shop.dao.OrderStatusDao;
 import shop.entity.OrderStatus;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 
 @Repository
 public class OrderStatusDaoImpl implements OrderStatusDao {

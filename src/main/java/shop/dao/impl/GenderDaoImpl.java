@@ -1,12 +1,12 @@
 package shop.dao.impl;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import shop.dao.GenderDao;
 import shop.entity.Gender;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 
 @Repository
 public class GenderDaoImpl implements GenderDao {

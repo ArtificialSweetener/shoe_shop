@@ -1,8 +1,5 @@
 package shop.entity;
-
 import jakarta.persistence.*;
-
-import java.util.Objects;
 @Entity
 @Table(name = "payment_services")
 public class PaymentService {
@@ -35,26 +32,5 @@ public class PaymentService {
 
     public void setApiKey(String apiKey) {
         this.apiKey = apiKey;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof PaymentService that)) return false;
-        return Objects.equals(getId(), that.getId()) && Objects.equals(getName(), that.getName()) && Objects.equals(getApiKey(), that.getApiKey());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId(), getName(), getApiKey());
-    }
-
-    @Override
-    public String toString() {
-        return "PaymentService{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", apiKey='" + apiKey + '\'' +
-                '}';
     }
 }

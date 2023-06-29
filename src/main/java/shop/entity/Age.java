@@ -3,9 +3,8 @@ package shop.entity;
 import jakarta.persistence.*;
 
 import java.util.Objects;
-
 @Entity
-@Table(name = "ages")
+@Table(name = "age")
 public class Age {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,13 +31,14 @@ public class Age {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Age age1)) return false;
-        return Objects.equals(getId(), age1.getId()) && Objects.equals(getAge(), age1.getAge());
+        if (o == null || getClass() != o.getClass()) return false;
+        Age age1 = (Age) o;
+        return Objects.equals(id, age1.id) && Objects.equals(age, age1.age);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getAge());
+        return Objects.hash(id, age);
     }
 
     @Override

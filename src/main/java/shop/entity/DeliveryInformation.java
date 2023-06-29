@@ -1,8 +1,8 @@
 package shop.entity;
-
 import jakarta.persistence.*;
 
 import java.util.Objects;
+
 @Entity
 @Table(name = "delivery_information")
 public class DeliveryInformation {
@@ -88,13 +88,14 @@ public class DeliveryInformation {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof DeliveryInformation that)) return false;
-        return Objects.equals(getId(), that.getId()) && Objects.equals(getDeliveryService(), that.getDeliveryService()) && Objects.equals(getCountry(), that.getCountry()) && Objects.equals(getCity(), that.getCity()) && Objects.equals(getAddress(), that.getAddress()) && Objects.equals(getPostalCode(), that.getPostalCode()) && Objects.equals(getPostOfficeNumber(), that.getPostOfficeNumber());
+        if (o == null || getClass() != o.getClass()) return false;
+        DeliveryInformation that = (DeliveryInformation) o;
+        return Objects.equals(id, that.id) && Objects.equals(deliveryService, that.deliveryService) && Objects.equals(country, that.country) && Objects.equals(city, that.city) && Objects.equals(address, that.address) && Objects.equals(postalCode, that.postalCode) && Objects.equals(postOfficeNumber, that.postOfficeNumber);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getDeliveryService(), getCountry(), getCity(), getAddress(), getPostalCode(), getPostOfficeNumber());
+        return Objects.hash(id, deliveryService, country, city, address, postalCode, postOfficeNumber);
     }
 
     @Override

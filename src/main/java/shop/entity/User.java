@@ -1,5 +1,4 @@
 package shop.entity;
-
 import jakarta.persistence.*;
 
 import java.util.Arrays;
@@ -117,16 +116,18 @@ public class User {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof User user)) return false;
-        return isBlocked() == user.isBlocked() && Objects.equals(getId(), user.getId()) && Objects.equals(getName(), user.getName()) && Objects.equals(getSurname(), user.getSurname()) && Objects.equals(getEmail(), user.getEmail()) && Objects.equals(getPassword(), user.getPassword()) && Objects.equals(getMobilePhone(), user.getMobilePhone()) && Arrays.equals(getSalt(), user.getSalt()) && Objects.equals(getRoles(), user.getRoles()) && Objects.equals(getOrders(), user.getOrders());
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return isBlocked == user.isBlocked && Objects.equals(id, user.id) && Objects.equals(name, user.name) && Objects.equals(surname, user.surname) && Objects.equals(email, user.email) && Objects.equals(password, user.password) && Objects.equals(mobilePhone, user.mobilePhone) && Arrays.equals(salt, user.salt) && Objects.equals(roles, user.roles) && Objects.equals(shoppingCart, user.shoppingCart) && Objects.equals(orders, user.orders);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(getId(), getName(), getSurname(), getEmail(), getPassword(), getMobilePhone(), getRoles(), getOrders(), isBlocked());
-        result = 31 * result + Arrays.hashCode(getSalt());
+        int result = Objects.hash(id, name, surname, email, password, mobilePhone, roles, shoppingCart, orders, isBlocked);
+        result = 31 * result + Arrays.hashCode(salt);
         return result;
     }
+
     @Override
     public String toString() {
         return "User{" +
@@ -138,10 +139,9 @@ public class User {
                 ", mobilePhone='" + mobilePhone + '\'' +
                 ", salt=" + Arrays.toString(salt) +
                 ", roles=" + roles +
+                ", shoppingCart=" + shoppingCart +
                 ", orders=" + orders +
                 ", isBlocked=" + isBlocked +
                 '}';
     }
-
-
 }

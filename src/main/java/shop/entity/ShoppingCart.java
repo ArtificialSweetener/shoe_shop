@@ -1,8 +1,9 @@
 package shop.entity;
-
 import jakarta.persistence.*;
 
 import java.util.List;
+import java.util.Objects;
+
 @Entity
 @Table(name = "shopping_carts")
 public class ShoppingCart {
@@ -52,5 +53,28 @@ public class ShoppingCart {
 
     public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ShoppingCart that = (ShoppingCart) o;
+        return Double.compare(that.totalPrice, totalPrice) == 0 && Objects.equals(id, that.id) && Objects.equals(owner, that.owner) && Objects.equals(products, that.products);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, owner, products, totalPrice);
+    }
+
+    @Override
+    public String toString() {
+        return "ShoppingCart{" +
+                "id=" + id +
+                ", owner=" + owner +
+                ", products=" + products +
+                ", totalPrice=" + totalPrice +
+                '}';
     }
 }

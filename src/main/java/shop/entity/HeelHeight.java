@@ -1,5 +1,4 @@
 package shop.entity;
-
 import jakarta.persistence.*;
 
 import java.util.Objects;
@@ -32,13 +31,14 @@ public class HeelHeight {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof HeelHeight that)) return false;
-        return getCm() == that.getCm() && Objects.equals(getId(), that.getId());
+        if (o == null || getClass() != o.getClass()) return false;
+        HeelHeight that = (HeelHeight) o;
+        return cm == that.cm && Objects.equals(id, that.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getCm());
+        return Objects.hash(id, cm);
     }
 
     @Override

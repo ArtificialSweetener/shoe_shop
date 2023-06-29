@@ -1,14 +1,17 @@
 package shop.dao.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import shop.dao.ProductDao;
-import shop.entity.Product;
-import jakarta.persistence.criteria.*;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import shop.dao.ProductDao;
+import shop.entity.Product;
 
 import java.util.List;
 
@@ -76,7 +79,7 @@ public class ProductDaoImpl implements ProductDao {
     @Override
     public List<Product> findAll() {
         try (Session session = sessionFactory.openSession()){
-          Query<Product> getAllProductsQuery = session.createQuery("from Product", Product.class);
+            Query<Product> getAllProductsQuery = session.createQuery("from Product", Product.class);
             return getAllProductsQuery.getResultList();
         }
     }
@@ -93,17 +96,18 @@ public class ProductDaoImpl implements ProductDao {
     @Override
     public List<Product> findAllWherePriceBetween(Double from, Double to) {
         try(Session session = sessionFactory.openSession()){
-          CriteriaBuilder cb = session.getCriteriaBuilder();
-          CriteriaQuery<Product> query = cb.createQuery(Product.class);
-          Root<Product> productRoot = query.from(Product.class);
-          Predicate priceGt = cb.gt(productRoot.get("price"), from);
-          Predicate priceLt = cb.gt(productRoot.get("price"), to);
-          //select from products where price > :from and price <: to
-          Predicate pricePredicate = cb.and(priceGt, priceLt);
-          query.where(pricePredicate);
-          return session.createQuery(query).getResultList();
+            CriteriaBuilder cb = session.getCriteriaBuilder();
+            CriteriaQuery<Product> query = cb.createQuery(Product.class);
+            Root<Product> productRoot = query.from(Product.class);
+            Predicate priceGt = cb.gt(productRoot.get("price"), from);
+            Predicate priceLt = cb.gt(productRoot.get("price"), to);
+            //select from products where price > :from and price <: to
+            Predicate pricePredicate = cb.and(priceGt, priceLt);
+            query.where(pricePredicate);
+            return session.createQuery(query).getResultList();
         }
     }
+
 
     @Override
     public List<Product> findAllWherePriceBetweenAndColorIn(Double from, Double to, String[] colors) {
@@ -121,7 +125,7 @@ public class ProductDaoImpl implements ProductDao {
             //color predicate
             CriteriaBuilder.In<String> colorPredicate = cb.in(productRoot.get("color"));
             for(String color: colors){
-            colorPredicate.value(color);
+                colorPredicate.value(color);
             }
 
             query.where(cb.and(pricePredicate, colorPredicate));
@@ -150,6 +154,6 @@ public class ProductDaoImpl implements ProductDao {
 
             query.where(cb.or(pricePredicate, colorPredicate));
             return session.createQuery((query)).getResultList();
-    }
+        }
     }
 }

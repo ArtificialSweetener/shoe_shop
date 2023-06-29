@@ -42,13 +42,14 @@ public class Manufacturer {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Manufacturer that)) return false;
-        return Objects.equals(getId(), that.getId()) && Objects.equals(getName(), that.getName()) && Objects.equals(getManufacturerCountry(), that.getManufacturerCountry());
+        if (o == null || getClass() != o.getClass()) return false;
+        Manufacturer that = (Manufacturer) o;
+        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(manufacturerCountry, that.manufacturerCountry);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName(), getManufacturerCountry());
+        return Objects.hash(id, name, manufacturerCountry);
     }
 
     @Override

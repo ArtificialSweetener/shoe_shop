@@ -32,13 +32,14 @@ public class Country {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Country country)) return false;
-        return Objects.equals(getId(), country.getId()) && Objects.equals(getName(), country.getName());
+        if (o == null || getClass() != o.getClass()) return false;
+        Country country = (Country) o;
+        return Objects.equals(id, country.id) && Objects.equals(name, country.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName());
+        return Objects.hash(id, name);
     }
 
     @Override

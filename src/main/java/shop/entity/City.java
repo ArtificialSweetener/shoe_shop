@@ -59,13 +59,14 @@ public class City {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof City city)) return false;
-        return Objects.equals(getId(), city.getId()) && Objects.equals(getName(), city.getName()) && Objects.equals(getCountry(), city.getCountry()) && Objects.equals(getAvailableDeliveryServices(), city.getAvailableDeliveryServices());
+        if (o == null || getClass() != o.getClass()) return false;
+        City city = (City) o;
+        return Objects.equals(id, city.id) && Objects.equals(name, city.name) && Objects.equals(country, city.country) && Objects.equals(availableDeliveryServices, city.availableDeliveryServices);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName(), getCountry(), getAvailableDeliveryServices());
+        return Objects.hash(id, name, country, availableDeliveryServices);
     }
 
     @Override

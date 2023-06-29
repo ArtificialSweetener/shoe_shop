@@ -1,10 +1,10 @@
 package shop.entity;
-
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
+
 @Entity
 @Table(name = "orders")
 public class Order {
@@ -124,21 +124,22 @@ public class Order {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Order order)) return false;
-        return Double.compare(order.getTotalPrice(), getTotalPrice()) == 0 && isPhoneCallAcceptable() == order.isPhoneCallAcceptable() && Objects.equals(getId(), order.getId()) && Objects.equals(getOwner(), order.getOwner()) && Objects.equals(getProducts(), order.getProducts()) && Objects.equals(getDeliveryInformation(), order.getDeliveryInformation()) && Objects.equals(getComment(), order.getComment()) && Objects.equals(getOrderStatus(), order.getOrderStatus()) && Objects.equals(getOrderDate(), order.getOrderDate()) && Objects.equals(getPaymentTransactions(), order.getPaymentTransactions());
+        if (o == null || getClass() != o.getClass()) return false;
+        Order order = (Order) o;
+        return Double.compare(order.totalPrice, totalPrice) == 0 && isPhoneCallAcceptable == order.isPhoneCallAcceptable && Objects.equals(id, order.id) && Objects.equals(owner, order.owner) && Objects.equals(products, order.products) && Objects.equals(deliveryInformation, order.deliveryInformation) && Objects.equals(comment, order.comment) && Objects.equals(orderStatus, order.orderStatus) && Objects.equals(orderDate, order.orderDate) && Objects.equals(paymentTransactions, order.paymentTransactions);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getOwner(), getProducts(), getTotalPrice(), isPhoneCallAcceptable(), getDeliveryInformation(), getComment(), getOrderStatus(), getOrderDate(), getPaymentTransactions());
+        return Objects.hash(id, owner, products, totalPrice, isPhoneCallAcceptable, deliveryInformation, comment, orderStatus, orderDate, paymentTransactions);
     }
 
     @Override
     public String toString() {
         return "Order{" +
                 "id=" + id +
-                ", owner=" + (owner != null ? owner.getId() : null) +
-                ", products=" + (products != null ? products.size() : null) +
+                ", owner=" + owner +
+                ", products=" + products +
                 ", totalPrice=" + totalPrice +
                 ", isPhoneCallAcceptable=" + isPhoneCallAcceptable +
                 ", deliveryInformation=" + deliveryInformation +

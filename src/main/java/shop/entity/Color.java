@@ -3,6 +3,7 @@ package shop.entity;
 import jakarta.persistence.*;
 
 import java.util.Objects;
+
 @Entity
 @Table(name = "colors")
 public class Color {
@@ -31,13 +32,14 @@ public class Color {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Color color)) return false;
-        return Objects.equals(getId(), color.getId()) && Objects.equals(getName(), color.getName());
+        if (o == null || getClass() != o.getClass()) return false;
+        Color color = (Color) o;
+        return Objects.equals(id, color.id) && Objects.equals(name, color.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName());
+        return Objects.hash(id, name);
     }
 
     @Override

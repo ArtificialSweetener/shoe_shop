@@ -1,5 +1,4 @@
 package shop.entity;
-
 import jakarta.persistence.*;
 
 import java.util.Objects;
@@ -44,13 +43,14 @@ public class PaymentInformation {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof PaymentInformation that)) return false;
-        return Objects.equals(getId(), that.getId()) && Objects.equals(getPaymentTransaction(), that.getPaymentTransaction()) && Objects.equals(getPaymentMethod(), that.getPaymentMethod());
+        if (o == null || getClass() != o.getClass()) return false;
+        PaymentInformation that = (PaymentInformation) o;
+        return Objects.equals(id, that.id) && Objects.equals(paymentTransaction, that.paymentTransaction) && Objects.equals(paymentMethod, that.paymentMethod);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getPaymentTransaction(), getPaymentMethod());
+        return Objects.hash(id, paymentTransaction, paymentMethod);
     }
 
     @Override

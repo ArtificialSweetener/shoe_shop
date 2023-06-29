@@ -54,13 +54,14 @@ public class DeliveryService {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof DeliveryService that)) return false;
-        return Objects.equals(getId(), that.getId()) && Objects.equals(getName(), that.getName()) && Objects.equals(getDescription(), that.getDescription()) && Objects.equals(getCitiesWhereAvailable(), that.getCitiesWhereAvailable());
+        if (o == null || getClass() != o.getClass()) return false;
+        DeliveryService that = (DeliveryService) o;
+        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(description, that.description) && Objects.equals(citiesWhereAvailable, that.citiesWhereAvailable);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName(), getDescription(), getCitiesWhereAvailable());
+        return Objects.hash(id, name, description, citiesWhereAvailable);
     }
 
     @Override
